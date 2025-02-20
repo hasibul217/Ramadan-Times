@@ -1,9 +1,13 @@
 import React from "react";
+import Logo from "./Components/Logo";
+import Navbar from "./Components/Navbar";
 
 const App = () => {
   return (
-    <div className="container mx-auto">
-      <h1 className="text-4xl  underline text-red-700">Hello world!</h1>
+    <div className="mx-auto">
+     
+   <Navbar />
+     
     </div>
   );
 };
