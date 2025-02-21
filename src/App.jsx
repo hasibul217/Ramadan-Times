@@ -1,22 +1,33 @@
-import React from "react";
-import Logo from "./Components/Logo";
-import Navbar from "./Components/Navbar";
-import LocationList from "./Components/Sehri & Iftar/LocationList";
+import React, { useState } from "react";
 import RamadanTimings from "./Components/Sehri & Iftar/RamadanTimings";
+import LocationList from "./Components/Sehri & Iftar/LocationList";
+
+import Navbar from "./Components/Navbar";
+
+import PrayerTiming from "./Components/Prayer Time/PrayingTiming";
+
+
 
 const App = () => {
-  return (
+  const [selectedDivision, setSelectedDivision] = useState("Dhaka");
 
-    <>
-     <div className="mx-auto">
-     
-     <Navbar />
-     <LocationList/>
-     <RamadanTimings/>
-       
-      </div>
-    </>
-   
+  return (
+    <div>
+      <Navbar />
+      
+      <LocationList onDivisionSelect={setSelectedDivision} />
+        {/* Display selected division above the timings */}
+        {selectedDivision && (
+        <div className="text-center">
+          <p className="text-xl text-green-900 font-semibold">
+            Iftar and Sehri time of:{" "}
+            <span className="font-bold">{selectedDivision}</span>
+          </p>
+        </div>
+      )}
+      <RamadanTimings division={selectedDivision} />
+      <PrayerTiming division={selectedDivision} />
+    </div>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import RamadanTimings from "./RamadanTimings";
 
-const LocationList = () => {
+const LocationList = ({ onDivisionSelect }) => {
   const divisions = [
     "Dhaka",
     "Mymensingh",
@@ -10,12 +9,10 @@ const LocationList = () => {
     "Khulna",
     "Rajshahi",
     "Barisal",
-
     "Rangpur",
   ];
 
   const [selectedDivision, setSelectedDivision] = useState("Dhaka");
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -24,6 +21,7 @@ const LocationList = () => {
 
   const handleDivisionSelect = (division) => {
     setSelectedDivision(division);
+    onDivisionSelect(division); // Pass selected division to App.jsx
     setIsDropdownOpen(false);
   };
 
@@ -31,10 +29,7 @@ const LocationList = () => {
     <div className="container mx-auto py-6">
       {/* Dropdown for Mobile */}
       <div className="sm:hidden flex flex-col">
-        <label
-          htmlFor="tabs"
-          className="text-gray-700 font-medium mb-2 text-center text-xl"
-        >
+        <label className="text-gray-700 font-medium mb-2 text-center text-xl">
           Select your division
         </label>
         <div className="relative">
@@ -52,7 +47,7 @@ const LocationList = () => {
                 <li key={index}>
                   <button
                     onClick={() => handleDivisionSelect(division)}
-                    className="w-full text-left p-3 hover:bg-green-100 text-black  rounded mb-1 shadow-md"
+                    className="w-full text-left p-3 hover:bg-green-100 text-black rounded mb-1 shadow-md"
                   >
                     {division}
                   </button>
@@ -68,7 +63,7 @@ const LocationList = () => {
         {divisions.map((division, index) => (
           <li key={index}>
             <button
-              onClick={() => setSelectedDivision(division)}
+              onClick={() => handleDivisionSelect(division)}
               className={`px-6 py-2 rounded-lg transition-transform duration-300 ease-in-out focus:outline-none ${
                 selectedDivision === division
                   ? "bg-green-700 scale-105"
@@ -80,19 +75,6 @@ const LocationList = () => {
           </li>
         ))}
       </ul>
-
-      {/* Display selected division above the timings */}
-      {selectedDivision && (
-        <div className="mt-6 text-center">
-          <p className="text-xl text-green-900 font-semibold">
-            Iftar and Sehri time of:{" "}
-            <span className="font-bold">{selectedDivision}</span>
-          </p>
-        </div>
-      )}
-
-      {/* Display Ramadan timings */}
-      {selectedDivision && <RamadanTimings division={selectedDivision} />}
     </div>
   );
 };
