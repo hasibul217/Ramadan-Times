@@ -5,6 +5,7 @@ import LocationList from "./Components/Sehri & Iftar/LocationList";
 import Navbar from "./Components/Navbar";
 
 import PrayerTiming from "./Components/Prayer Time/PrayingTiming";
+import UserLocation from "./Components/UserLocation";
 
 
 
@@ -14,6 +15,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      <UserLocation/>
       
       <LocationList onDivisionSelect={setSelectedDivision} />
         {/* Display selected division above the timings */}
