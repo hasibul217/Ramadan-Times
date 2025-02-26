@@ -36,6 +36,20 @@ const RamadanTimings = ({ division }) => {
   const [timings, setTimings] = useState(null);
   const [date, setDate] = useState("");
   const [timeLeft, setTimeLeft] = useState("");
+  const [iftarPassed, setIftarPassed] = useState(false);
+
+  // Dua for Iftar and Sehri
+  const duaIftar = {
+    arabic: "اللهم إني لك صمت وعلى رزقك أفطرت",
+    bengali: "হে আল্লাহ! আমি তোমার জন্য রোজা রেখেছি এবং তোমার রিযিক দ্বারা ইফতার করেছি।",
+    english: "O Allah, I fasted for You, and I break my fast with Your provision."
+  };
+
+  const duaSehri = {
+    arabic: "اللهم إني نويت صيام غدٍ عن أداء فرض رمضان",
+    bengali: "হে আল্লাহ! আমি আগামীকালের রোজা রাখার নিয়ত করলাম।",
+    english: "O Allah, I intend to fast tomorrow in the month of Ramadan."
+  };
 
   useEffect(() => {
     const fetchTimings = async () => {
@@ -62,7 +76,9 @@ const RamadanTimings = ({ division }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       if (timings) {
-        setTimeLeft(getTimeLeft(timings.Maghrib)); // Change to Maghrib for Iftar
+        const timeRemaining = getTimeLeft(timings.Maghrib); // Change to Maghrib for Iftar
+        setTimeLeft(timeRemaining);
+        setIftarPassed(timeRemaining === "Iftar time has passed");
       }
     }, 1000);
 
@@ -100,9 +116,24 @@ const RamadanTimings = ({ division }) => {
           <p className="text-3xl font-bold">{timeLeft}</p>
         </div>
       </div>
-      <div className="mt-6 text-center text-lg text-gray-600">
-        <p className="font-semibold">Stay on track with your prayers and meals.</p>
-        <p>Keep these times in mind for a blessed Ramadan experience!</p>
+
+      {/* Dua Display */}
+      <div className="mt-6 text-center">
+        {iftarPassed ? (
+          <div>
+            <h2 className="text-xl font-semibold">Dua for Sehri</h2>
+            <p className="text-lg">{duaSehri.arabic}</p>
+            <p className="text-lg">{duaSehri.bengali}</p>
+            <p className="text-lg">{duaSehri.english}</p>
+          </div>
+        ) : (
+          <div>
+            <h2 className="text-xl font-semibold">Dua for Iftar</h2>
+            <p className="text-lg">{duaIftar.arabic}</p>
+            <p className="text-lg">{duaIftar.bengali}</p>
+            <p className="text-lg">{duaIftar.english}</p>
+          </div>
+        )}
       </div>
     </div>
   );
