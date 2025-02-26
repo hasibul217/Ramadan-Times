@@ -48,7 +48,7 @@ const PrayerTiming = ({ division }) => {
             key={index}
             className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300  hover:shadow-lg"
           >
-            <div className="bg-green-500 p-4 text-white"> {/* Header Section */}
+            <div className="bg-green-800 p-4 text-white"> {/* Header Section */}
               <h2 className="text-2xl font-semibold">{prayer.name}</h2>
             </div>
             <div className="p-4 bg-gray-100"> {/* Time Section */}

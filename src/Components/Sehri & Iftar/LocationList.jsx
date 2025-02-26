@@ -59,7 +59,7 @@ const LocationList = ({ onDivisionSelect }) => {
       </div>
 
       {/* Tabs for PC */}
-      <ul className="hidden sm:flex justify-center space-x-4 text-sm font-medium text-white rounded-lg shadow-lg bg-gradient-to-r from-green-400 to-green-600 py-2 px-4">
+      <ul className="hidden sm:flex justify-center space-x-4 text-sm font-medium text-white rounded-lg shadow-lg bg-gradient-to-r from-green-600 to-green-800 py-2 px-4">
         {divisions.map((division, index) => (
           <li key={index}>
             <button

@@ -77,25 +77,25 @@ const RamadanTimings = ({ division }) => {
     <div className="mt-8 px-6 md:px-12 text-center">
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 mt-6">
         {/* Date Card */}
-        <div className="bg-gradient-to-r from-green-400 to-teal-500 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center">
+        <div className="bg-green-700 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center">
           <h2 className="text-xl font-semibold mb-3 text-shadow">Date</h2>
           <p className="text-3xl font-bold">{date}</p>
         </div>
 
         {/* Sehri Last Time Card */}
-        <div className="bg-gradient-to-r from-green-600 to-lime-400 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center">
+        <div className="bg-green-700 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center">
           <h2 className="text-xl font-semibold mb-3 text-shadow">Sehri Last Time</h2>
           <p className="text-3xl font-bold">{convertTo12HourFormat(timings.Fajr)}</p>
         </div>
 
         {/* Iftar Time Card */}
-        <div className="bg-gradient-to-r from-orange-500 to-amber-400 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center">
+        <div className="bg-green-700 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center">
           <h2 className="text-xl font-semibold mb-3 text-shadow">Iftar Time</h2>
           <p className="text-3xl font-bold">{convertTo12HourFormat(timings.Maghrib)}</p>
         </div>
 
         {/* Timer Card for Iftar */}
-        <div className="bg-gradient-to-r from-blue-400 to-blue-600 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center">
+        <div className="bg-green-700 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 flex flex-col justify-center items-center">
           <h2 className="text-xl font-semibold mb-3 text-shadow">Time Left for Iftar</h2>
           <p className="text-3xl font-bold">{timeLeft}</p>
         </div>
